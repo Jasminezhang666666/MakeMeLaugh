@@ -11,6 +11,7 @@ public class Obj : MonoBehaviour
         {
             print("isFalling set to false.");
             isFalling = false; // Reset isFalling when colliding with other objects
+
         }
     }
 

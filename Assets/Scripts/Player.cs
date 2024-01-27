@@ -41,7 +41,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (!isMovingAllowed) return;
+        if (!isMovingAllowed || feetExtended) return;
 
         // Movement and sprite flipping logic
         movement.x = Input.GetAxisRaw("Horizontal");
@@ -76,12 +76,9 @@ public class Player : MonoBehaviour
             spriteRenderer.flipX = true;
         }
     }
-
     IEnumerator ExtendFeet()
     {
         isMovingAllowed = false;
-
-        // Store the original position at the beginning of extension
         originalFeetPosition = feet.position;
 
         float targetYPosition = originalFeetPosition.y - maxExtendDistance;
@@ -92,17 +89,18 @@ public class Player : MonoBehaviour
             newPosition.y = Mathf.MoveTowards(feet.position.y, targetYPosition, extendSpeed * Time.deltaTime);
             feet.position = newPosition;
 
+            // Check if the feet collided with something
             if (feet.GetComponent<Feet>().HasCollidedWithObject)
             {
-                break; // Stop extending if collided with an object
+                break;
             }
 
             yield return null;
         }
 
-        feetExtended = true; // Set feetExtended to true after successful extension
+        feetExtended = true;
 
-        // Ensure the feet are retracted after extending
+        // Always retract the feet after extending
         StartCoroutine(RetractFeet());
     }
 
@@ -119,10 +117,9 @@ public class Player : MonoBehaviour
             yield return null;
         }
 
-        isMovingAllowed = true; // Enable movement after retracting feet
-
-        // Reset the player's movement vector to prevent drifting
-        movement = Vector2.zero;
+        // Re-enable movement after the feet have fully retracted
+        isMovingAllowed = true;
+        movement = Vector2.zero; // Reset movement vector
     }
 
 }

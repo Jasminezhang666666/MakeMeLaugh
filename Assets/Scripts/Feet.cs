@@ -20,40 +20,44 @@ public class Feet : MonoBehaviour
             attachedObject.transform.position = transform.position - new Vector3(0, feetCollider.size.y, 0);
         }
     }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
-
-        if (collision.gameObject.CompareTag("Object") && attachedObject == null)
+        // Check if the collision is with an object tagged as "Object"
+        if (collision.gameObject.CompareTag("Object"))
         {
-            if(collision.gameObject.GetComponent<Obj>().isFalling)
+            // Additional checks can be performed here, e.g., if the object is falling or not
+            if (attachedObject == null && !collision.gameObject.GetComponent<Obj>().isFalling)
             {
-                Debug.Log("The Object is Falling. Can't be grabbed");
-                return;
-            }
+                HasCollidedWithObject = true;
+                attachedObject = collision.gameObject;
 
+                // Handle the attachment of the object
+                objectRigidbody = attachedObject.GetComponent<Rigidbody2D>();
+                if (objectRigidbody != null)
+                {
+                    objectRigidbody.isKinematic = true;
+                }
+
+                Collider2D objectCollider = attachedObject.GetComponent<Collider2D>();
+                if (objectCollider != null)
+                {
+                    objectCollider.enabled = false;
+                }
+
+                attachedObject.transform.SetParent(transform);
+
+                // Additional logic if the object has a specific script or components
+                Obj objectScript = attachedObject.GetComponent<Obj>();
+                if (objectScript != null)
+                {
+                    objectScript.isLifted = true;
+                }
+            }
+        }
+        else
+        {
+            // Set the flag if the feet collided with anything other than an object tagged as "Object"
             HasCollidedWithObject = true;
-            attachedObject = collision.gameObject;
-
-            objectRigidbody = attachedObject.GetComponent<Rigidbody2D>();
-            if (objectRigidbody != null)
-            {
-                objectRigidbody.isKinematic = true;
-            }
-
-            Collider2D objectCollider = attachedObject.GetComponent<Collider2D>();
-            if (objectCollider != null)
-            {
-                objectCollider.enabled = false;
-            }
-
-            attachedObject.transform.SetParent(transform);
-
-            Obj objectScript = attachedObject.GetComponent<Obj>();
-            if (objectScript != null)
-            {
-                objectScript.isLifted = true;
-            }
         }
     }
 

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Van : MonoBehaviour
 {
-    [SerializeField] private float speed = 10f;
+    [SerializeField] private float speed = 5f;
     [SerializeField] private Transform leftBoundaryTransform;
     [SerializeField] private Transform rightStartTransform;  
 

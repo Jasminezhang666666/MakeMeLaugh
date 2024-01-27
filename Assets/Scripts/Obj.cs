@@ -4,18 +4,26 @@ public class Obj : MonoBehaviour
 {
     public bool isLifted = false;
     public bool isFalling = false;
+    private Rigidbody2D rb;
 
     private void Start()
     {
-        UpdateCollisionSettings();
+        rb = GetComponent<Rigidbody2D>();
+        UpdateRigidbodyType();
+    }
+
+    private void Update()
+    {
+        // Update the Rigidbody type based on the parent's status
+        UpdateRigidbodyType();
     }
 
     private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            cancelParent();
-            return;
+            cancelParent(); // Remove parent relationship
+            return; // Exit the method
         }
 
         if (isFalling && !collision.gameObject.CompareTag("Feet"))
@@ -24,24 +32,20 @@ public class Obj : MonoBehaviour
         }
     }
 
-    private void UpdateCollisionSettings()
+    private void UpdateRigidbodyType()
     {
-        // If the Obj is on a Van, ignore collisions with the default layer
         if (transform.parent != null && transform.parent.gameObject.layer == LayerMask.NameToLayer("Van"))
         {
-            Physics2D.IgnoreLayerCollision(gameObject.layer, LayerMask.NameToLayer("Default"), true);
+            rb.bodyType = RigidbodyType2D.Kinematic;
         }
         else
         {
-            print("Not ignoring default layer anymore.");
-            // Reset collision settings to default when not a child of Van
-            Physics2D.IgnoreLayerCollision(gameObject.layer, LayerMask.NameToLayer("Default"), false);
+            rb.bodyType = RigidbodyType2D.Dynamic;
         }
     }
 
     public void cancelParent()
     {
         transform.parent = null;
-        UpdateCollisionSettings(); 
     }
 }

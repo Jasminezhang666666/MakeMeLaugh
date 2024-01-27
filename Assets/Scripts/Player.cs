@@ -91,6 +91,10 @@ public class Player : MonoBehaviour
             yield return null;
         }
 
+
+        // Release the object when feet retract
+        feet.GetComponent<Feet>().ReleaseObject();
+
         isMovingAllowed = true; // player can move again
     }
 

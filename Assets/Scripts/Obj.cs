@@ -23,7 +23,7 @@ public class Obj : MonoBehaviour
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             cancelParent(); // Remove parent relationship
-            return; // Exit the method
+            return;
         }
 
         if (isFalling && !collision.gameObject.CompareTag("Feet"))
@@ -34,7 +34,7 @@ public class Obj : MonoBehaviour
 
     private void UpdateRigidbodyType()
     {
-        if (transform.parent != null && transform.parent.gameObject.layer == LayerMask.NameToLayer("Van"))
+        if (transform.parent != null)
         {
             rb.bodyType = RigidbodyType2D.Kinematic;
         }

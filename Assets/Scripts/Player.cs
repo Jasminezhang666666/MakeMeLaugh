@@ -61,7 +61,6 @@ public class Player : MonoBehaviour
             spriteRenderer.flipX = false;
         }
     }
-
     IEnumerator ExtendFeet()
     {
         isMovingAllowed = false; // Stop player movement
@@ -74,6 +73,11 @@ public class Player : MonoBehaviour
         // Extend
         while (feet.localScale.y < extendedScale.y)
         {
+            if (feet.GetComponent<Feet>().HasCollidedWithObject)
+            {
+                break; // Stop extending if the feet have collided with an object
+            }
+
             feet.localScale = Vector3.MoveTowards(feet.localScale, extendedScale, extendSpeed * Time.deltaTime);
             feet.localPosition = Vector3.MoveTowards(feet.localPosition, newPosition, extendSpeed * Time.deltaTime / 2);
             yield return null;
@@ -92,7 +96,9 @@ public class Player : MonoBehaviour
         }
 
         feet.GetComponent<Feet>().ReleaseObject(); // Release the object when feet retract
+        feet.GetComponent<Feet>().ResetCollisionFlag(); // Reset the collision flag
 
         isMovingAllowed = true; // Player can move again
     }
+
 }

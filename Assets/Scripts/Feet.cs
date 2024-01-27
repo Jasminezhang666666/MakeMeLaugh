@@ -7,18 +7,11 @@ public class Feet : MonoBehaviour
     private GameObject attachedObject = null;
     private Vector3 originalObjectWorldScale;
     private BoxCollider2D feetCollider;
+    public bool HasCollidedWithObject { get; private set; } = false;
 
     private void Start()
     {
         feetCollider = GetComponent<BoxCollider2D>();
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Object") && attachedObject == null)
-        {
-            AttachObject(collision.gameObject);
-        }
     }
 
     void Update()
@@ -32,6 +25,21 @@ public class Feet : MonoBehaviour
             // Keep the object positioned at the bottom of the feet
             PositionObjectAtFeetBottom();
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Object") && attachedObject == null)
+        {
+            HasCollidedWithObject = true;
+            AttachObject(collision.gameObject);
+        }
+    }
+
+
+    public void ResetCollisionFlag()
+    {
+        HasCollidedWithObject = false;
     }
 
     public void AttachObject(GameObject obj)

@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEditor;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -14,6 +15,8 @@ public class Player : MonoBehaviour
     private bool feetExtended = false;
     private Vector3 originalFeetPosition; // To store original position of the feet
 
+    [SerializeField] private GameObject poop;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -24,8 +27,6 @@ public class Player : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
             {
                 Feet feetScript = feet.GetComponent<Feet>();
                 
@@ -39,7 +40,6 @@ public class Player : MonoBehaviour
                     StartCoroutine(ExtendFeet());
                 }
             }
-        }
 
         if (!isMovingAllowed || feetExtended) return;
 
@@ -48,6 +48,21 @@ public class Player : MonoBehaviour
         movement.y = Input.GetAxisRaw("Vertical");
         movement.Normalize();
         FlipSprite();
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Vector3 offset = new Vector3(-0.5f, -0.7f, 0); // Adjust as needed
+
+            // Check the direction the player is facing
+            if (GetComponent<SpriteRenderer>().flipX)
+            {
+                offset.x *= -1; // Flip the offset if the player is flipped
+            }
+            Vector3 spawnPosition = gameObject.transform.position + offset;
+
+            Instantiate(poop, spawnPosition, Quaternion.identity);
+        }
+
     }
 
     void FixedUpdate()

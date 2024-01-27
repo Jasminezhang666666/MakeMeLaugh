@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
     public float moveSpeed = 5f;
     public Transform feet; // Assign the Feet child object in the Inspector
     public float extendSpeed = 5f; // Speed at which feet extends
-    public float maxExtendDistance = 5f; // Maximum extension distance, increased for longer extension
+    public float maxExtendDistance = 15f; // Maximum extension distance
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
     private Vector2 movement;

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Feet : MonoBehaviour
 {
     private GameObject attachedObject = null;
-    private Vector3 originalObjectScale; // Store the original scale of the object
+    private Vector3 originalObjectWorldScale;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -19,25 +19,28 @@ public class Feet : MonoBehaviour
     {
         if (attachedObject != null)
         {
-            // Continuously reset the local scale of the object to its original scale
-            attachedObject.transform.localScale = originalObjectScale;
+            // Apply the inverse scale of the feet to maintain the original world scale of the object
+            Vector3 inverseScale = new Vector3(1 / transform.lossyScale.x, 1 / transform.lossyScale.y, 1 / transform.lossyScale.z);
+            attachedObject.transform.localScale = Vector3.Scale(originalObjectWorldScale, inverseScale);
         }
     }
 
     public void AttachObject(GameObject obj)
     {
         attachedObject = obj;
-        attachedObject.transform.SetParent(transform);
-        originalObjectScale = obj.transform.localScale; // Store the original scale
+        attachedObject.transform.SetParent(transform); // Set the object as a child of the feet
+        originalObjectWorldScale = attachedObject.transform.lossyScale; // Store the original world scale
     }
 
     public void ReleaseObject()
     {
         if (attachedObject != null)
         {
-            attachedObject.transform.SetParent(null);
+            attachedObject.transform.SetParent(null); // Detach the object
+            attachedObject.transform.localScale = originalObjectWorldScale; // Reset the scale to original world scale
             attachedObject = null;
         }
     }
 }
+
 

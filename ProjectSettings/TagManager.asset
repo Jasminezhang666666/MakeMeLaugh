@@ -14,7 +14,7 @@ TagManager:
   - Water
   - UI
   - 
-  - 
+  - Ground
   - 
   - Van
   - 
@@ -42,4 +42,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Back
+    uniqueID: 2645438833
+    locked: 0
+  - name: Middle
+    uniqueID: 1616173491
+    locked: 0
+  - name: Player
+    uniqueID: 139063149
+    locked: 0
+  - name: Front
+    uniqueID: 1654117741
     locked: 0

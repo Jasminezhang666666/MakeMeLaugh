@@ -15,6 +15,8 @@ public class Player : MonoBehaviour
     private bool feetExtended = false;
     private Vector3 originalFeetPosition; // To store original position of the feet
 
+    public float feetHeight;
+
     [SerializeField] private GameObject poop;
 
     void Awake()
@@ -28,6 +30,7 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
             {
+                feetHeight = transform.Find("Feet").transform.position.y;
                 Feet feetScript = feet.GetComponent<Feet>();
                 
                 if (feetScript.IsObjectAttached())

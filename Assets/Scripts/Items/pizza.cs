@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class pizza : Items
 {
+    public bool triggered = false;
     private Vector2 initialPosition;
     public GameObject target;
 
@@ -30,7 +31,8 @@ public class pizza : Items
 
     void Update()
     {
-        if (itemStatus == status.EnterBase)
+        if (itemStatus == status.EnterBase) Launch();
+        if (triggered)
         {
             float yPos = offset + Mathf.Sin(Time.time * speed) * amplitude;
             transform.position = new Vector2(transform.position.x + n.x, yPos);
@@ -45,6 +47,13 @@ public class pizza : Items
     }  
     public override void Launch()
     {
-        itemStatus = status.EnterBase;
+        triggered = true;
     }
+
+    public override void Destroy()
+    {
+        Destroy(gameObject);
+    }
+
+
 }

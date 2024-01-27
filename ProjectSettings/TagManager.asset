@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Object
   - Feet
+  - PlayerBase
+  - EnemyBase
   layers:
   - Default
   - TransparentFX

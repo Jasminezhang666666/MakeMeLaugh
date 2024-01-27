@@ -7,22 +7,29 @@ public abstract class Items : MonoBehaviour
     public enum status
     {
         Before,
+        Air,
         EnterBase
     }
     public status itemStatus = status.Before;
     private int point;
-
     public abstract void Launch();
+    public abstract void Destroy();
     public int getPoint()
     {
         return point;
     }
 
-    public void OnCollisionEnter2D(Collision2D collision)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "PlayerBase")
         {
-            Launch();
+            itemStatus = status.EnterBase;
+        }
+        else if (collision.gameObject.tag == "EnemyBase")
+        {
+            Destroy();
         }
     }
+
+
 }

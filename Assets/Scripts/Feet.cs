@@ -5,15 +5,13 @@ using UnityEngine;
 public class Feet : MonoBehaviour
 {
     private GameObject attachedObject = null;
-    private Vector3 offset; // Offset between the feet and the object
+    private Vector3 originalObjectScale; // Store the original scale of the object
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Object") && attachedObject == null)
         {
-            attachedObject = collision.gameObject;
-            // Calculate and store the offset between the feet and the object
-            offset = attachedObject.transform.position - transform.position;
+            AttachObject(collision.gameObject);
         }
     }
 
@@ -21,14 +19,25 @@ public class Feet : MonoBehaviour
     {
         if (attachedObject != null)
         {
-            // Update the object's position to follow the feet, using the stored offset
-            attachedObject.transform.position = transform.position + offset;
+            // Continuously reset the local scale of the object to its original scale
+            attachedObject.transform.localScale = originalObjectScale;
         }
+    }
+
+    public void AttachObject(GameObject obj)
+    {
+        attachedObject = obj;
+        attachedObject.transform.SetParent(transform);
+        originalObjectScale = obj.transform.localScale; // Store the original scale
     }
 
     public void ReleaseObject()
     {
-        // Release the reference to the object
-        attachedObject = null;
+        if (attachedObject != null)
+        {
+            attachedObject.transform.SetParent(null);
+            attachedObject = null;
+        }
     }
 }
+

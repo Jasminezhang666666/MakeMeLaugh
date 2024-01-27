@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
     public float moveSpeed = 5f;
     public Transform feet; // Assign the Feet child object in the Inspector
     public float extendSpeed = 5f; // Speed at which feet extends
-    public float maxExtendDistance = 2f; // Maximum extension distance
+    public float maxExtendDistance = 5f; // Maximum extension distance, increased for longer extension
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
     private Vector2 movement;
@@ -61,11 +61,11 @@ public class Player : MonoBehaviour
             spriteRenderer.flipX = false;
         }
     }
+
     IEnumerator ExtendFeet()
     {
         isMovingAllowed = false; // Stop player movement
         Vector3 originalScale = feet.localScale;
-        maxExtendDistance = 15f; // Extension, adjust as needed
         Vector3 extendedScale = new Vector3(feet.localScale.x, feet.localScale.y + maxExtendDistance, feet.localScale.z);
 
         Vector3 originalPosition = feet.localPosition;
@@ -83,7 +83,7 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         // Retract
-        float retractSpeed = extendSpeed / 2; //retract speed
+        float retractSpeed = extendSpeed / 2;
         while (feet.localScale.y > originalScale.y)
         {
             feet.localScale = Vector3.MoveTowards(feet.localScale, originalScale, retractSpeed * Time.deltaTime);
@@ -91,12 +91,8 @@ public class Player : MonoBehaviour
             yield return null;
         }
 
+        feet.GetComponent<Feet>().ReleaseObject(); // Release the object when feet retract
 
-        // Release the object when feet retract
-        feet.GetComponent<Feet>().ReleaseObject();
-
-        isMovingAllowed = true; // player can move again
+        isMovingAllowed = true; // Player can move again
     }
-
 }
-

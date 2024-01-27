@@ -2,17 +2,40 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public float moveSpeed = 5f;
+    private Rigidbody2D rb;
+    private Vector2 movement;
+    private SpriteRenderer spriteRenderer;
+
+    void Awake()
     {
-        
+        rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        // Input
+        movement.x = Input.GetAxisRaw("Horizontal");
+        movement.y = Input.GetAxisRaw("Vertical");
+
+        // Flip sprite based on movement direction
+        if (movement.x < 0)
+        {
+            spriteRenderer.flipX = true;
+        }
+        else if (movement.x > 0)
+        {
+            spriteRenderer.flipX = false;
+        }
+    }
+
+    void FixedUpdate()
+    {
+        // Movement
+        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
 }
+

@@ -157,7 +157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   feet: {fileID: 1249108716}
-  extendSpeed: 7
+  extendSpeed: 20
   maxExtendDistance: 15
 --- !u!212 &145978407
 SpriteRenderer:

@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        originalFeetPosition = feet.position; // Store original position at start
+        originalFeetPosition = feet.localPosition; // Store original position at start
     }
 
     void Update()
@@ -85,19 +85,19 @@ public class Player : MonoBehaviour
 
         isMovingAllowed = false;
         feetExtended = true;
-        originalFeetPosition = feet.position;
 
-        float targetYPosition = originalFeetPosition.y - maxExtendDistance;
+        // Set the target local Y position based on the original local position and max extension distance
+        float targetLocalYPosition = originalFeetPosition.y - maxExtendDistance;
 
-        while (feet.position.y > targetYPosition)
+        while (feet.localPosition.y > targetLocalYPosition)
         {
-            Vector3 newPosition = feet.position;
-            newPosition.y = Mathf.MoveTowards(feet.position.y, targetYPosition, extendSpeed * Time.deltaTime);
-            feet.position = newPosition;
+            Vector3 newLocalPosition = feet.localPosition;
+            newLocalPosition.y = Mathf.MoveTowards(feet.localPosition.y, targetLocalYPosition, extendSpeed * Time.deltaTime);
+            feet.localPosition = newLocalPosition;
 
             if (feet.GetComponent<Feet>().HasCollidedWithObject)
             {
-                feet.GetComponent<Feet>().HasCollidedWithObject = false; // Reset the collision flag
+                feet.GetComponent<Feet>().ResetCollisionFlag(); // Ensure Feet class has this method to reset the flag
                 break;
             }
 
@@ -106,18 +106,20 @@ public class Player : MonoBehaviour
 
         StartCoroutine(RetractFeet()); // Always retract after extending
     }
+
     IEnumerator RetractFeet()
-{
-    while (feet.position.y < originalFeetPosition.y)
     {
-        Vector3 newPosition = feet.position;
-        newPosition.y = Mathf.MoveTowards(feet.position.y, originalFeetPosition.y, extendSpeed * Time.deltaTime);
-        feet.position = newPosition;
-        yield return null;
+        while (feet.localPosition.y < originalFeetPosition.y)
+        {
+            Vector3 newLocalPosition = feet.localPosition;
+            newLocalPosition.y = Mathf.MoveTowards(feet.localPosition.y, originalFeetPosition.y, extendSpeed * Time.deltaTime);
+            feet.localPosition = newLocalPosition;
+            yield return null;
+        }
+
+        isMovingAllowed = true;
+        feetExtended = false; // Reset the feetExtended state
     }
 
-    isMovingAllowed = true;
-    feetExtended = false; // Reset the feetExtended state
-}
 
 }

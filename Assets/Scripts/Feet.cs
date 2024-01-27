@@ -103,4 +103,10 @@ public class Feet : MonoBehaviour
     {
         return attachedObject != null;
     }
+
+    public void ResetCollisionFlag()
+    {
+        HasCollidedWithObject = false;
+    }
+
 }

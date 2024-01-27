@@ -11,7 +11,7 @@ public class chips : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         //rb.rotation = -35f; 
-        rb.velocity = new Vector2(Random.Range(5,10), Random.Range(5,10));
+        rb.velocity = new Vector2(Random.Range(20,30), Random.Range(20,30));
         
     }
 

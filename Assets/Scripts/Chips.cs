@@ -1,14 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class transform : MonoBehaviour
+public class Chips : MonoBehaviour
 {
     public SpriteRenderer spriteRenderer;
-    public MafiaGun Gun;
+    public ChipsGun Gun;
     public Obj obj;
-    
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

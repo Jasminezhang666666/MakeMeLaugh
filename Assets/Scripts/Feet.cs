@@ -23,8 +23,15 @@ public class Feet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+
         if (collision.gameObject.CompareTag("Object") && attachedObject == null)
         {
+            if(collision.gameObject.GetComponent<Obj>().isFalling)
+            {
+                Debug.Log("The Object is Falling. Can't be grabbed");
+                return;
+            }
+
             HasCollidedWithObject = true;
             attachedObject = collision.gameObject;
 
@@ -41,16 +48,20 @@ public class Feet : MonoBehaviour
             }
 
             attachedObject.transform.SetParent(transform);
+
+            Obj objectScript = attachedObject.GetComponent<Obj>();
+            if (objectScript != null)
+            {
+                objectScript.isLifted = true;
+            }
         }
     }
 
     public void ReleaseObject()
     {
+        print("Releasing Object");
         if (attachedObject != null)
         {
-            // Detach the object from the feet
-            attachedObject.transform.SetParent(null);
-
             // Re-enable physics, if necessary
             if (objectRigidbody != null)
             {
@@ -64,12 +75,24 @@ public class Feet : MonoBehaviour
                 objectCollider.enabled = true;
             }
 
+            // Detach the object from the feet
+            attachedObject.transform.SetParent(null);
+
+
+
+            Obj objectScript = attachedObject.GetComponent<Obj>();
+            if (objectScript != null)
+            {
+                objectScript.isLifted = false;
+                objectScript.isFalling = true;
+            }
+
             // Reset the attached object and its Rigidbody
             attachedObject = null;
             objectRigidbody = null;
+
         }
     }
-
 
     public bool IsObjectAttached()
     {

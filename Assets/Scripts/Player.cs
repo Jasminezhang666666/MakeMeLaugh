@@ -25,16 +25,18 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            if (feet.GetComponent<Feet>().IsObjectAttached())
+            {
+                feet.GetComponent<Feet>().ReleaseObject();
+            }
+
             if (feetExtended)
             {
-                if (feet.GetComponent<Feet>().IsObjectAttached())
-                {
-                    feet.GetComponent<Feet>().ReleaseObject();
-                }
                 StartCoroutine(RetractFeet());
             }
             else if (isMovingAllowed)
             {
+                // Extend feet
                 StartCoroutine(ExtendFeet());
             }
         }
@@ -78,7 +80,6 @@ public class Player : MonoBehaviour
     IEnumerator ExtendFeet()
     {
         isMovingAllowed = false;
-        feetExtended = true;
 
         // Store the original position at the beginning of extension
         originalFeetPosition = feet.position;
@@ -99,8 +100,12 @@ public class Player : MonoBehaviour
             yield return null;
         }
 
-        StartCoroutine(RetractFeet()); // Always retract feet after extending
+        feetExtended = true; // Set feetExtended to true after successful extension
+
+        // Ensure the feet are retracted after extending
+        StartCoroutine(RetractFeet());
     }
+
 
     IEnumerator RetractFeet()
     {
@@ -119,4 +124,5 @@ public class Player : MonoBehaviour
         // Reset the player's movement vector to prevent drifting
         movement = Vector2.zero;
     }
+
 }

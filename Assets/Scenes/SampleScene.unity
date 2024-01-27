@@ -403,6 +403,7 @@ GameObject:
   - component: {fileID: 1241239125}
   - component: {fileID: 1241239127}
   - component: {fileID: 1241239128}
+  - component: {fileID: 1241239129}
   m_Layer: 0
   m_Name: Square
   m_TagString: Object
@@ -549,6 +550,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1241239129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1241239124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dab806237c55da942bd48dec5b2785f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isLifted: 0
+  isFalling: 0
 --- !u!1 &1249108715
 GameObject:
   m_ObjectHideFlags: 0
@@ -563,7 +578,7 @@ GameObject:
   - component: {fileID: 1249108719}
   m_Layer: 0
   m_Name: Feet
-  m_TagString: Untagged
+  m_TagString: Feet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -19,6 +19,7 @@ public class pizza : Items
 
     void Start()
     {
+        target = GameObject.Find("Enemy Base").gameObject;
         initialPosition = transform.position;
         offset = transform.position.y;
         float xPos = target.transform.position.x - initialPosition.x;

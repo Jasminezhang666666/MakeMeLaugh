@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
     void Start()
     {
-        //GameObject.Find("Pizza").GetComponent<pizza>().Launch();
+        GameObject.Find("Pizza").GetComponent<pizza>().Launch();
     }
 
 }

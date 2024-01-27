@@ -25,19 +25,19 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (feet.GetComponent<Feet>().IsObjectAttached())
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                feet.GetComponent<Feet>().ReleaseObject();
-            }
-
-            if (feetExtended)
-            {
-                StartCoroutine(RetractFeet());
-            }
-            else if (isMovingAllowed)
-            {
-                // Extend feet
-                StartCoroutine(ExtendFeet());
+                Feet feetScript = feet.GetComponent<Feet>();
+                
+                if (feetScript.IsObjectAttached())
+                {
+                    feetScript.ReleaseObject();
+                }
+                else if (!feetExtended && isMovingAllowed)
+                {
+                    // Extend feet only if they are not already extended and the player is allowed to move
+                    StartCoroutine(ExtendFeet());
+                }
             }
         }
 
@@ -78,7 +78,13 @@ public class Player : MonoBehaviour
     }
     IEnumerator ExtendFeet()
     {
+        if (feetExtended)
+        {
+            yield break; // Exit if feet are already extended
+        }
+
         isMovingAllowed = false;
+        feetExtended = true;
         originalFeetPosition = feet.position;
 
         float targetYPosition = originalFeetPosition.y - maxExtendDistance;
@@ -89,37 +95,29 @@ public class Player : MonoBehaviour
             newPosition.y = Mathf.MoveTowards(feet.position.y, targetYPosition, extendSpeed * Time.deltaTime);
             feet.position = newPosition;
 
-            // Check if the feet collided with something
             if (feet.GetComponent<Feet>().HasCollidedWithObject)
             {
+                feet.GetComponent<Feet>().HasCollidedWithObject = false; // Reset the collision flag
                 break;
             }
 
             yield return null;
         }
 
-        feetExtended = true;
-
-        // Always retract the feet after extending
-        StartCoroutine(RetractFeet());
+        StartCoroutine(RetractFeet()); // Always retract after extending
     }
-
-
     IEnumerator RetractFeet()
+{
+    while (feet.position.y < originalFeetPosition.y)
     {
-        feetExtended = false;
-
-        while (feet.position.y < originalFeetPosition.y)
-        {
-            Vector3 newPosition = feet.position;
-            newPosition.y = Mathf.MoveTowards(feet.position.y, originalFeetPosition.y, extendSpeed * Time.deltaTime);
-            feet.position = newPosition;
-            yield return null;
-        }
-
-        // Re-enable movement after the feet have fully retracted
-        isMovingAllowed = true;
-        movement = Vector2.zero; // Reset movement vector
+        Vector3 newPosition = feet.position;
+        newPosition.y = Mathf.MoveTowards(feet.position.y, originalFeetPosition.y, extendSpeed * Time.deltaTime);
+        feet.position = newPosition;
+        yield return null;
     }
+
+    isMovingAllowed = true;
+    feetExtended = false; // Reset the feetExtended state
+}
 
 }

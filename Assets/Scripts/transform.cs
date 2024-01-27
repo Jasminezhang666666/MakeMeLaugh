@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class transform : MonoBehaviour
 {
     public SpriteRenderer spriteRenderer;
-    public MafiaGun mafiaGun;
+    public MafiaGun Gun;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,14 +24,25 @@ public class transform : MonoBehaviour
         if (collision.gameObject.tag == "Base")
         {
             spriteRenderer.color = Color.red;
-            mafiaGun.canFire = true;
+            Gun.canFire = true;
         }
-        else
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Base")
+        {
+            spriteRenderer.color = Color.red;
+            Gun.canFire = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Base")
         {
             spriteRenderer.color = Color.white;
-            mafiaGun.canFire = false;
+            Gun.canFire = false;
         }
-        
-        
     }
 }

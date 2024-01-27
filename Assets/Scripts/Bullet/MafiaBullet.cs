@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class MafiaBullet : MonoBehaviour
 {
     public Rigidbody2D rb;
+    public int speed;
 
     private void Awake()
     {
@@ -13,7 +15,7 @@ public class MafiaBullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb.velocity = new Vector2 (5, Random.Range(-1f,1f));
+        rb.velocity = new Vector2 (speed, Random.Range(-1f,1f));
     }
 
     // Update is called once per frame

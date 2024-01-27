@@ -4,12 +4,25 @@ using UnityEngine;
 
 public abstract class Items : MonoBehaviour
 {
-    public bool collected = false;
+    public enum status
+    {
+        Before,
+        EnterBase
+    }
+    public status itemStatus = status.Before;
     private int point;
 
     public abstract void Launch();
     public int getPoint()
     {
         return point;
+    }
+
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "PlayerBase")
+        {
+            Launch();
+        }
     }
 }

@@ -30,7 +30,7 @@ public class pizza : Items
 
     void Update()
     {
-        if (collected)
+        if (itemStatus == status.EnterBase)
         {
             float yPos = offset + Mathf.Sin(Time.time * speed) * amplitude;
             transform.position = new Vector2(transform.position.x + n.x, yPos);
@@ -45,6 +45,6 @@ public class pizza : Items
     }  
     public override void Launch()
     {
-        collected = true;
+        itemStatus = status.EnterBase;
     }
 }

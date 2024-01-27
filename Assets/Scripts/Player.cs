@@ -11,29 +11,42 @@ public class Player : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Vector2 movement;
     private bool isMovingAllowed = true;
+    private bool feetExtended = false;
+    private Vector3 originalFeetPosition; // To store original position of the feet
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        originalFeetPosition = feet.localPosition; // Store original position at start
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isMovingAllowed)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            StartCoroutine(ExtendFeet());
-            return; // Skip reading movement input when extending feet
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                Feet feetScript = feet.GetComponent<Feet>();
+                
+                if (feetScript.IsObjectAttached())
+                {
+                    feetScript.ReleaseObject();
+                }
+                else if (!feetExtended && isMovingAllowed)
+                {
+                    // Extend feet only if they are not already extended and the player is allowed to move
+                    StartCoroutine(ExtendFeet());
+                }
+            }
         }
 
-        if (!isMovingAllowed) return; // Skip movement if not allowed
+        if (!isMovingAllowed || feetExtended) return;
 
-        // Input
+        // Movement and sprite flipping logic
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
         movement.Normalize();
-
-        // Flip sprite based on movement direction
         FlipSprite();
     }
 
@@ -47,58 +60,66 @@ public class Player : MonoBehaviour
 
     private void MovePlayer()
     {
+        // Move the player based on the movement vector
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
 
     private void FlipSprite()
     {
-        if (movement.x < 0)
-        {
-            spriteRenderer.flipX = true;
-        }
-        else if (movement.x > 0)
+        // Flip the sprite based on the horizontal movement direction
+        if (movement.x > 0)
         {
             spriteRenderer.flipX = false;
+        }
+        else if (movement.x < 0)
+        {
+            spriteRenderer.flipX = true;
         }
     }
     IEnumerator ExtendFeet()
     {
-        isMovingAllowed = false; // Stop player movement
-        Vector3 originalScale = feet.localScale;
-        Vector3 extendedScale = new Vector3(feet.localScale.x, feet.localScale.y + maxExtendDistance, feet.localScale.z);
-
-        Vector3 originalPosition = feet.localPosition;
-        Vector3 newPosition = new Vector3(feet.localPosition.x, feet.localPosition.y - maxExtendDistance / 2, feet.localPosition.z);
-
-        // Extend
-        while (feet.localScale.y < extendedScale.y)
+        if (feetExtended)
         {
+            yield break; // Exit if feet are already extended
+        }
+
+        isMovingAllowed = false;
+        feetExtended = true;
+
+        // Set the target local Y position based on the original local position and max extension distance
+        float targetLocalYPosition = originalFeetPosition.y - maxExtendDistance;
+
+        while (feet.localPosition.y > targetLocalYPosition)
+        {
+            Vector3 newLocalPosition = feet.localPosition;
+            newLocalPosition.y = Mathf.MoveTowards(feet.localPosition.y, targetLocalYPosition, extendSpeed * Time.deltaTime);
+            feet.localPosition = newLocalPosition;
+
             if (feet.GetComponent<Feet>().HasCollidedWithObject)
             {
-                break; // Stop extending if the feet have collided with an object
+                feet.GetComponent<Feet>().ResetCollisionFlag(); // Ensure Feet class has this method to reset the flag
+                break;
             }
 
-            feet.localScale = Vector3.MoveTowards(feet.localScale, extendedScale, extendSpeed * Time.deltaTime);
-            feet.localPosition = Vector3.MoveTowards(feet.localPosition, newPosition, extendSpeed * Time.deltaTime / 2);
             yield return null;
         }
 
-        //Delay before retracting
-        yield return new WaitForSeconds(1f);
-
-        // Retract
-        float retractSpeed = extendSpeed / 2;
-        while (feet.localScale.y > originalScale.y)
-        {
-            feet.localScale = Vector3.MoveTowards(feet.localScale, originalScale, retractSpeed * Time.deltaTime);
-            feet.localPosition = Vector3.MoveTowards(feet.localPosition, originalPosition, retractSpeed * Time.deltaTime / 2);
-            yield return null;
-        }
-
-        feet.GetComponent<Feet>().ReleaseObject(); // Release the object when feet retract
-        feet.GetComponent<Feet>().ResetCollisionFlag(); // Reset the collision flag
-
-        isMovingAllowed = true; // Player can move again
+        StartCoroutine(RetractFeet()); // Always retract after extending
     }
+
+    IEnumerator RetractFeet()
+    {
+        while (feet.localPosition.y < originalFeetPosition.y)
+        {
+            Vector3 newLocalPosition = feet.localPosition;
+            newLocalPosition.y = Mathf.MoveTowards(feet.localPosition.y, originalFeetPosition.y, extendSpeed * Time.deltaTime);
+            feet.localPosition = newLocalPosition;
+            yield return null;
+        }
+
+        isMovingAllowed = true;
+        feetExtended = false; // Reset the feetExtended state
+    }
+
 
 }

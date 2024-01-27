@@ -1,30 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Feet : MonoBehaviour
 {
     private GameObject attachedObject = null;
+    private Rigidbody2D objectRigidbody;
     private Vector3 originalObjectWorldScale;
     private BoxCollider2D feetCollider;
     public bool HasCollidedWithObject { get; private set; } = false;
 
+
     private void Start()
     {
         feetCollider = GetComponent<BoxCollider2D>();
-    }
-
-    void Update()
-    {
-        if (attachedObject != null)
-        {
-            // Apply the inverse scale of the feet to maintain the original world scale of the object
-            Vector3 inverseScale = new Vector3(1 / transform.lossyScale.x, 1 / transform.lossyScale.y, 1 / transform.lossyScale.z);
-            attachedObject.transform.localScale = Vector3.Scale(originalObjectWorldScale, inverseScale);
-
-            // Keep the object positioned at the bottom of the feet
-            PositionObjectAtFeetBottom();
-        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -36,19 +23,34 @@ public class Feet : MonoBehaviour
         }
     }
 
-
-    public void ResetCollisionFlag()
+    void FixedUpdate()
     {
-        HasCollidedWithObject = false;
+        if (attachedObject != null)
+        {
+            Vector3 inverseScale = new Vector3(1 / transform.lossyScale.x, 1 / transform.lossyScale.y, 1 / transform.lossyScale.z);
+            attachedObject.transform.localScale = Vector3.Scale(originalObjectWorldScale, inverseScale);
+            PositionObjectAtFeetBottom();
+        }
     }
 
     public void AttachObject(GameObject obj)
     {
         attachedObject = obj;
-        attachedObject.transform.SetParent(transform); // Set the object as a child of the feet
-        originalObjectWorldScale = attachedObject.transform.lossyScale; // Store the original world scale
+        attachedObject.transform.SetParent(transform);
+        originalObjectWorldScale = attachedObject.transform.lossyScale;
 
-        // Initial positioning of the object at the bottom of the feet
+        objectRigidbody = attachedObject.GetComponent<Rigidbody2D>();
+        if (objectRigidbody != null)
+        {
+            objectRigidbody.isKinematic = true;
+        }
+
+        Collider2D objectCollider = attachedObject.GetComponent<Collider2D>();
+        if (objectCollider != null)
+        {
+            objectCollider.enabled = false;
+        }
+
         PositionObjectAtFeetBottom();
     }
 
@@ -56,9 +58,22 @@ public class Feet : MonoBehaviour
     {
         if (attachedObject != null)
         {
-            attachedObject.transform.SetParent(null); // Detach the object
-            attachedObject.transform.localScale = originalObjectWorldScale; // Reset the scale to original world scale
+            attachedObject.transform.SetParent(null);
+            attachedObject.transform.localScale = originalObjectWorldScale;
+
+            if (objectRigidbody != null)
+            {
+                objectRigidbody.isKinematic = false;
+            }
+
+            Collider2D objectCollider = attachedObject.GetComponent<Collider2D>();
+            if (objectCollider != null)
+            {
+                objectCollider.enabled = true;
+            }
+
             attachedObject = null;
+            objectRigidbody = null;
         }
     }
 
@@ -66,15 +81,30 @@ public class Feet : MonoBehaviour
     {
         if (feetCollider != null && attachedObject != null)
         {
-            // Calculate the bottom position of the feet collider
             float bottomY = transform.position.y - feetCollider.bounds.extents.y;
             float objectHeight = attachedObject.GetComponent<Collider2D>().bounds.size.y;
             Vector3 bottomPosition = new Vector3(transform.position.x,
                                                  bottomY - objectHeight / 2,
                                                  transform.position.z);
 
-            // Position the object at the bottom of the feet collider
-            attachedObject.transform.position = bottomPosition;
+            if (objectRigidbody != null)
+            {
+                objectRigidbody.MovePosition(bottomPosition);
+            }
+            else
+            {
+                attachedObject.transform.position = bottomPosition;
+            }
         }
+    }
+
+    public bool IsObjectAttached()
+    {
+        return attachedObject != null;
+    }
+
+    public void ResetCollisionFlag()
+    {
+        HasCollidedWithObject = false;
     }
 }

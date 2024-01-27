@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Vector2 movement;
     private bool isMovingAllowed = true;
+    private bool feetExtended = false;
 
     void Awake()
     {
@@ -20,15 +21,25 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isMovingAllowed)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            StartCoroutine(ExtendFeet());
-            return; // Skip reading movement input when extending feet
+            if (feetExtended && feet.GetComponent<Feet>().IsObjectAttached())
+            {
+                // Release the object if feet are extended and holding an object
+                feet.GetComponent<Feet>().ReleaseObject();
+                feetExtended = false;
+            }
+            else if (isMovingAllowed)
+            {
+                // Extend feet if not currently extended
+                StartCoroutine(ExtendFeet());
+            }
+            return;
         }
 
         if (!isMovingAllowed) return; // Skip movement if not allowed
 
-        // Input
+        // Input for movement
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
         movement.Normalize();
@@ -61,14 +72,14 @@ public class Player : MonoBehaviour
             spriteRenderer.flipX = false;
         }
     }
+
     IEnumerator ExtendFeet()
     {
-        isMovingAllowed = false; // Stop player movement
+        isMovingAllowed = false;
+        feetExtended = true;
+
         Vector3 originalScale = feet.localScale;
         Vector3 extendedScale = new Vector3(feet.localScale.x, feet.localScale.y + maxExtendDistance, feet.localScale.z);
-
-        Vector3 originalPosition = feet.localPosition;
-        Vector3 newPosition = new Vector3(feet.localPosition.x, feet.localPosition.y - maxExtendDistance / 2, feet.localPosition.z);
 
         // Extend
         while (feet.localScale.y < extendedScale.y)
@@ -79,11 +90,10 @@ public class Player : MonoBehaviour
             }
 
             feet.localScale = Vector3.MoveTowards(feet.localScale, extendedScale, extendSpeed * Time.deltaTime);
-            feet.localPosition = Vector3.MoveTowards(feet.localPosition, newPosition, extendSpeed * Time.deltaTime / 2);
             yield return null;
         }
 
-        //Delay before retracting
+        // Delay before retracting
         yield return new WaitForSeconds(1f);
 
         // Retract
@@ -91,14 +101,12 @@ public class Player : MonoBehaviour
         while (feet.localScale.y > originalScale.y)
         {
             feet.localScale = Vector3.MoveTowards(feet.localScale, originalScale, retractSpeed * Time.deltaTime);
-            feet.localPosition = Vector3.MoveTowards(feet.localPosition, originalPosition, retractSpeed * Time.deltaTime / 2);
             yield return null;
         }
 
-        feet.GetComponent<Feet>().ReleaseObject(); // Release the object when feet retract
-        feet.GetComponent<Feet>().ResetCollisionFlag(); // Reset the collision flag
-
-        isMovingAllowed = true; // Player can move again
+        feet.GetComponent<Feet>().ReleaseObject();
+        feet.GetComponent<Feet>().ResetCollisionFlag();
+        isMovingAllowed = true;
+        feetExtended = false;
     }
-
 }

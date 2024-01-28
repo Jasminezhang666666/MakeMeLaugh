@@ -2016,6 +2016,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98d29dfd2ce361d4aa09ea9037165a36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  feetHeight: 0
 --- !u!61 &1249108719
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3221,7 +3222,7 @@ SceneRoots:
   - {fileID: 1213250910}
   - {fileID: 1409330900}
   - {fileID: 592023410}
+  - {fileID: 1339519334}
   - {fileID: 1177668489}
   - {fileID: 2111640084}
   - {fileID: 13550928}
-  - {fileID: 1339519334}

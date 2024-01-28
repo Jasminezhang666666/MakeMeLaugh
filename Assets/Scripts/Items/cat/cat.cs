@@ -22,6 +22,7 @@ public class cat : Items
     [SerializeField] private float rotationDegree = 150.0f;
     [SerializeField] private float rotationSpeed = 45.0f;
     [SerializeField] private float force = 10.0f;
+    public float lengthChanged = 0;
 
 
     void Start()
@@ -29,8 +30,10 @@ public class cat : Items
         point = 50;
         originalLength = transform.localScale.y;
         catLength = transform.localScale.y;
+
         feet = GameObject.Find("Feet").gameObject;
-        feetHeight = GameObject.Find("Player").gameObject.GetComponent<Player>().feetHeight;
+        feetHeight = GameObject.Find("Feet").gameObject.GetComponent<Feet>().feetHeight;
+
         target = GameObject.Find("Enemy Base").transform;
         
         rb = GetComponent<Rigidbody2D>();
@@ -39,6 +42,7 @@ public class cat : Items
 
     void Update()
     {
+        feetHeight = GameObject.Find("Feet").gameObject.GetComponent<Feet>().feetHeight;
         if (itemStatus == status.EnterBase)
         {
             if (!triggered)
@@ -52,7 +56,9 @@ public class cat : Items
         if (this.GetComponent<Obj>().isLifted)
         {
             itemStatus = status.Air;
-            catLength = (Mathf.Abs(feet.transform.position.y - feetHeight) + originalLength);
+            print(lengthChanged);
+            catLength = (float)(Mathf.Abs(feetHeight - feet.transform.position.y) * 0.5f + originalLength);
+            lengthChanged = catLength - originalLength;
             transform.localScale = new Vector3(transform.localScale.x, catLength, transform.localScale.z);
         }
         

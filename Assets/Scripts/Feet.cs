@@ -5,6 +5,9 @@ public class Feet : MonoBehaviour
     private GameObject attachedObject = null;
     private Rigidbody2D objectRigidbody;
     private BoxCollider2D feetCollider;
+
+
+    public float feetHeight;
     public bool HasCollidedWithObject { get; set; } = false;
 
     private void Start()
@@ -43,6 +46,7 @@ public class Feet : MonoBehaviour
     }
     private void AttachObject()
     {
+        feetHeight = transform.position.y;
         objectRigidbody = attachedObject.GetComponent<Rigidbody2D>();
         if (objectRigidbody != null)
         {

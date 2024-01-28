@@ -611,7 +611,7 @@ GameObject:
   - component: {fileID: 257562401}
   - component: {fileID: 257562400}
   m_Layer: 0
-  m_Name: Square
+  m_Name: IceScream
   m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1433,6 +1433,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2366065655149774577, guid: c8ac3db3955750149ae15816b5bd7678, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2366065655149774577, guid: c8ac3db3955750149ae15816b5bd7678, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4426829732222420526, guid: c8ac3db3955750149ae15816b5bd7678, type: 3}
       propertyPath: m_LocalScale.x
       value: -5.9
@@ -2877,7 +2885,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.114405155, y: -1.6279614}
+  m_Offset: {x: -0.37763, y: -1.6279614}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -2888,7 +2896,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 13.432126, y: 6.5183387}
+  m_Size: {x: 11.852758, y: 6.5183387}
   m_EdgeRadius: 0
 --- !u!114 &1222747681
 MonoBehaviour:
@@ -2993,7 +3001,7 @@ Transform:
   m_GameObject: {fileID: 1222747679}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 164.7, y: -10.9, z: 0}
+  m_LocalPosition: {x: 229.9, y: -17.7, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3533,6 +3541,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 63991644, guid: d4c0ab073bdc62c46ab1065ebc83f516, type: 3}
+    - target: {fileID: 7264763211887463010, guid: 44304d542569a124cb03e2d7cac9ae3a, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7264763211887463010, guid: 44304d542569a124cb03e2d7cac9ae3a, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1616173491
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3593,7 +3609,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.052107573, y: -1.6674502}
+  m_Offset: {x: -0.8635905, y: -1.6674502}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -3604,7 +3620,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 13.855982, y: 6.6650996}
+  m_Size: {x: 11.015884, y: 6.6650996}
   m_EdgeRadius: 0
 --- !u!114 &1567624207
 MonoBehaviour:
@@ -3709,7 +3725,7 @@ Transform:
   m_GameObject: {fileID: 1567624205}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 105.6, y: -10.5, z: 0}
+  m_LocalPosition: {x: 104.8, y: -17.8, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4181,6 +4197,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3926536388633120409, guid: 55655fbf886b63749bd8a3b9afb2834f, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3926536388633120409, guid: 55655fbf886b63749bd8a3b9afb2834f, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1616173491
+      objectReference: {fileID: 0}
     - target: {fileID: 4917250699285051084, guid: 55655fbf886b63749bd8a3b9afb2834f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -25

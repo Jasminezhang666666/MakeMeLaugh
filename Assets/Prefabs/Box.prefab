@@ -16,9 +16,10 @@ GameObject:
   - component: {fileID: 6059410796237771566}
   - component: {fileID: 552330431947603348}
   - component: {fileID: 1510508587146228765}
+  - component: {fileID: 4662077731963480152}
   m_Layer: 0
   m_Name: Box
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33,7 +34,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 48.93, y: 1.58, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 6, y: 6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -78,8 +79,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c822ffb0f0e2bf8478f4e4668ff3e5b0, type: 3}
+  m_SortingOrder: 3
+  m_Sprite: {fileID: 413439025, guid: 222e25effc951004d8d04d2bff790bc9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -136,18 +137,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.003815651, y: -0.025723457}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5.74, y: 3.44}
+    oldSize: {x: 1.28, y: 1.28}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5.74, y: 3.44}
+  m_Size: {x: 1.2060604, y: 1.1562781}
   m_EdgeRadius: 0
 --- !u!50 &2598385775432069320
 Rigidbody2D:
@@ -191,6 +192,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 3926536388633120409}
   Gun: {fileID: 552330431947603348}
   obj: {fileID: 1883053928174681420}
+  animator: {fileID: 4662077731963480152}
 --- !u!114 &552330431947603348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,8 +210,9 @@ MonoBehaviour:
   bullet: {fileID: 8688439800127760014, guid: 0a0a6c0881094b642aed38e9b832201b, type: 3}
   canFire: 0
   rb: {fileID: 2598385775432069320}
-  shootRate: 2
+  shootRate: 0.5
   shootSound: {fileID: 1510508587146228765}
+  animator: {fileID: 4662077731963480152}
 --- !u!82 &1510508587146228765
 AudioSource:
   m_ObjectHideFlags: 0
@@ -306,3 +309,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &4662077731963480152
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5121837557649703470}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cee2282af2c38d5418c4efa658086673, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

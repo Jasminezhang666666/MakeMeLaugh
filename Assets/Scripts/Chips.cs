@@ -7,12 +7,12 @@ public class Chips : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public ChipsGun Gun;
     public Obj obj;
-
+    public Animator animator;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Base" && obj.isLifted == false)
         {
-            spriteRenderer.color = Color.red;
+            animator.SetBool("isTrigger",true);
             Gun.canFire = true;
         }
     }
@@ -21,7 +21,7 @@ public class Chips : MonoBehaviour
     {
         if (collision.gameObject.tag == "Base" && obj.isLifted == false)
         {
-            spriteRenderer.color = Color.red;
+            animator.SetBool("isTrigger", true);
             Gun.canFire = true;
         }
     }
@@ -30,7 +30,7 @@ public class Chips : MonoBehaviour
     {
         if (collision.gameObject.tag == "Base")
         {
-            spriteRenderer.color = Color.white;
+            animator.SetBool("isTrigger", false);
             Gun.canFire = false;
         }
     }

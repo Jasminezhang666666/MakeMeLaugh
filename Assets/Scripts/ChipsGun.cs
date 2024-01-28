@@ -11,7 +11,7 @@ public class ChipsGun : MonoBehaviour
     public Rigidbody2D rb;
     public float shootRate;
     public AudioSource shootSound;
-
+    public Animator animator;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -40,6 +40,7 @@ public class ChipsGun : MonoBehaviour
 
     IEnumerator MafiaFireGun()
     {
+        animator.SetBool("isAttack",true);
         Instantiate(bullet, rb.position, Quaternion.identity);
         Instantiate(bullet, rb.position, Quaternion.identity);
         Instantiate(bullet, rb.position, Quaternion.identity);
@@ -50,6 +51,7 @@ public class ChipsGun : MonoBehaviour
         Instantiate(bullet, rb.position, Quaternion.identity);
         Instantiate(bullet, rb.position, Quaternion.identity);
         shootSound.Play();
+        animator.SetBool("isAttack", false);
         yield return new WaitForSeconds(shootRate);
 
 

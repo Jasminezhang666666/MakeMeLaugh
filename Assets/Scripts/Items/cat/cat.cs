@@ -39,7 +39,7 @@ public class cat : Items
         feet = GameObject.Find("Feet").gameObject;
         feetHeight = GameObject.Find("Feet").gameObject.GetComponent<Feet>().feetHeight;
 
-        target = GameObject.Find("Enemy Base").transform;
+        target = GameObject.FindWithTag("EnemyBase").transform;
         
         rb = GetComponent<Rigidbody2D>();
         timeToHit = false;
@@ -115,7 +115,6 @@ public class cat : Items
         while (currentRotation < rotationDegree)
         {
             rotationStep = -rotationSpeed * Time.deltaTime;
-            //transform.Rotate(Vector3.forward, rotationStep, Space.Self);
             ownHead.transform.Rotate(Vector3.forward, rotationStep, Space.Self);
 
             currentRotation -= rotationStep;

@@ -5,10 +5,12 @@ using UnityEngine;
 public class RespawnManager : MonoBehaviour
 {
     [SerializeField] private int maxObjects = 5;
-    [SerializeField] private List<GameObject> objectPrefabs;
+    [SerializeField] private List<GameObject> movingObjectPrefabs;
+    [SerializeField] private List<GameObject> nonMovingObjectPrefabs;
     [SerializeField] private Transform respawnPoint;
 
     private Collider2D areaCollider;
+    private Dictionary<GameObject, Vector3> originalPositions = new Dictionary<GameObject, Vector3>();
 
     private void Start()
     {
@@ -16,6 +18,23 @@ public class RespawnManager : MonoBehaviour
         if (areaCollider == null)
         {
             Debug.LogError("RespawnManager requires a Collider2D component on the GameObject.");
+        }
+
+        // Store the original positions of all objects
+        foreach (var obj in movingObjectPrefabs)
+        {
+            if (obj != null)
+            {
+                originalPositions[obj] = obj.transform.position;
+            }
+        }
+
+        foreach (var obj in nonMovingObjectPrefabs)
+        {
+            if (obj != null)
+            {
+                originalPositions[obj] = obj.transform.position;
+            }
         }
     }
 
@@ -34,21 +53,37 @@ public class RespawnManager : MonoBehaviour
                 }
             }
 
-            if (objectCount < maxObjects)
+            int objectsToRespawn = maxObjects - objectCount;
+            if (objectsToRespawn > 0)
             {
-                RespawnObjects(maxObjects - objectCount);
+                RespawnRandomObjects(objectsToRespawn);
             }
         }
     }
 
-    private void RespawnObjects(int numberOfObjects)
+    private void RespawnRandomObjects(int numberOfObjects)
     {
+        List<GameObject> combinedList = new List<GameObject>(movingObjectPrefabs);
+        combinedList.AddRange(nonMovingObjectPrefabs);
+
         for (int i = 0; i < numberOfObjects; i++)
         {
-            if (objectPrefabs.Count > 0)
+            if (combinedList.Count > 0)
             {
-                GameObject prefab = objectPrefabs[Random.Range(0, objectPrefabs.Count)];
-                Vector3 spawnPosition = new Vector3(respawnPoint.position.x, respawnPoint.position.y + prefab.transform.position.y, respawnPoint.position.z);
+                GameObject prefab = combinedList[Random.Range(0, combinedList.Count)];
+                Vector3 spawnPosition;
+
+                if (movingObjectPrefabs.Contains(prefab))
+                {
+                    // If it's a moving object, maintain its original Y position
+                    spawnPosition = new Vector3(respawnPoint.position.x, originalPositions[prefab].y, respawnPoint.position.z);
+                }
+                else
+                {
+                    // If it's a non-moving object, use its original position
+                    spawnPosition = originalPositions[prefab];
+                }
+
                 Instantiate(prefab, spawnPosition, Quaternion.identity);
             }
         }

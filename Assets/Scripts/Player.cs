@@ -48,7 +48,7 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
             {
-                feetHeight = transform.Find("Feet").transform.position.y;
+                
                 Feet feetScript = feet.GetComponent<Feet>();
                 
                 if (feetScript.IsObjectAttached())

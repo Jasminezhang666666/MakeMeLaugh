@@ -12,7 +12,7 @@ public class Box : MonoBehaviour
     {
         if (collision.gameObject.tag == "Base" && obj.isLifted == false)
         {
-            spriteRenderer.color = Color.red;
+            animator.SetBool("isRaise", true);
             Gun.canFire = true;
         }
     }
@@ -21,7 +21,7 @@ public class Box : MonoBehaviour
     {
         if (collision.gameObject.tag == "Base" && obj.isLifted == false)
         {
-            spriteRenderer.color = Color.red;
+            animator.SetBool("isRaise", true);
             Gun.canFire = true;
         }
     }
@@ -30,20 +30,20 @@ public class Box : MonoBehaviour
     {
         if (collision.gameObject.tag == "Base")
         {
-            spriteRenderer.color = Color.white;
+            animator.SetBool("isRaise", false);
             Gun.canFire = false;
         }
     }
 
-    private void Update()
-    {
-        if (obj.isLifted == true)
-        {
-            animator.SetBool("isRaise", true);
-        }
-        else
-        {
-            animator.SetBool("isRaise", false);
-        }
-    }
+    //private void Update()
+    //{
+    //    if (obj.isLifted == true)
+    //    {
+    //        animator.SetBool("isRaise", true);
+    //    }
+    //    else
+    //    {
+    //        animator.SetBool("isRaise", false);
+    //    }
+    //}
 }

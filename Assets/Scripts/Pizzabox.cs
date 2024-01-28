@@ -42,6 +42,7 @@ public class Pizzabox : MonoBehaviour
     {
         Instantiate(bullet, rb.position, Quaternion.identity);
         shootSound.Play();
+        yield return new WaitForSeconds(shootRate);
         Instantiate(bullet, rb.position, Quaternion.identity);
         shootSound.Play();
         yield return new WaitForSeconds(shootRate);

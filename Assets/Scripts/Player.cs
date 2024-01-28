@@ -1,14 +1,17 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
     //TEST ONLY
     public bool WASD = false;
 
-
+    public int time;
+    public Slider slider;
 
     public float moveSpeed = 5f;
     public Transform feet; // Assign the Feet child object in the Inspector
@@ -26,6 +29,7 @@ public class Player : MonoBehaviour
     public float speed;
     public Animator animator;
     public float feetHeight;
+    public AudioSource hurt;
 
     [SerializeField] private GameObject poop;
 
@@ -46,6 +50,10 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        time--;
+
+        slider.value = time;
+
         if (Input.GetKeyDown(KeyCode.Space))
             {
                 
@@ -97,6 +105,7 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
+        time--;
         if (movement.x != 0  && isMovingAllowed || movement.y != 0 && isMovingAllowed)
         {
             //change the movement when player move
@@ -186,5 +195,19 @@ public class Player : MonoBehaviour
         feetExtended = false; // Reset the feetExtended state
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "nut")
+        {
+            hurt.Play();
+            time -= 20;
+            Feet feetScript = feet.GetComponent<Feet>();
+            if (feetScript.IsObjectAttached())
+            {
+                feetScript.ReleaseObject();
+            }
+            Destroy(collision.gameObject);
+        }
+    }
 
 }

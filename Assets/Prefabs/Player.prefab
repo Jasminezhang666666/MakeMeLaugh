@@ -109,7 +109,7 @@ MonoBehaviour:
   speed: 7
   animator: {fileID: 341141588836309357}
   feetHeight: 0
-  poop: {fileID: 0}
+  poop: {fileID: 5572853725620117391, guid: 74efad780050cd846a50189559cba843, type: 3}
 --- !u!50 &1602859014465118539
 Rigidbody2D:
   serializedVersion: 4

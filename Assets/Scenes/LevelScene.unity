@@ -445,10 +445,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 3716594428051457797, guid: 27385bda38ee7954dade0c804206d773, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
     - target: {fileID: 4450638136527938399, guid: 27385bda38ee7954dade0c804206d773, type: 3}
       propertyPath: m_SortingLayer
       value: 3
@@ -2604,6 +2600,7 @@ GameObject:
   - component: {fileID: 1213356993}
   - component: {fileID: 1213356992}
   - component: {fileID: 1213356991}
+  - component: {fileID: 1213356995}
   m_Layer: 0
   m_Name: Trigger Area
   m_TagString: Base
@@ -2750,6 +2747,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1213356995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1213356990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07108e28a247b4f459ee2b9aba2526ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zoomInValue: 1
 --- !u!1 &1222747679 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1823797078568029557, guid: 3b6034cb9362e58459a8d96d253fd3a2, type: 3}

@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
@@ -15,6 +16,10 @@ public class Player : MonoBehaviour
     private bool feetExtended = false;
     private Vector3 originalFeetPosition; // To store original position of the feet
 
+
+    [Header("Move")]
+    public float speed;
+    public Animator animator;
     public float feetHeight;
 
     [SerializeField] private GameObject poop;
@@ -24,6 +29,14 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         originalFeetPosition = feet.localPosition; // Store original position at start
+    }
+
+    private void OnMovement(InputValue value)
+    {
+        //set the movement by input
+        movement = value.Get<Vector2>();
+
+
     }
 
     void Update()
@@ -47,10 +60,10 @@ public class Player : MonoBehaviour
         if (!isMovingAllowed || feetExtended) return;
 
         // Movement and sprite flipping logic
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
-        movement.Normalize();
-        FlipSprite();
+        //movement.x = Input.GetAxisRaw("Horizontal");
+        //movement.y = Input.GetAxisRaw("Vertical");
+        //movement.Normalize();
+        //FlipSprite();
 
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -70,9 +83,29 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (isMovingAllowed)
+        if (movement.x != 0  && isMovingAllowed || movement.y != 0 && isMovingAllowed)
         {
-            MovePlayer();
+            //change the movement when player move
+            rb.velocity = new Vector2(movement.x * speed, movement.y * speed);
+        }
+
+        if (rb.velocity.x > 5)
+        {
+            animator.SetBool("right", true);
+            animator.SetBool("left", false);
+            animator.SetBool("stay", false);
+        }
+        else if (rb.velocity.x < -5)
+        {
+            animator.SetBool("right", false);
+            animator.SetBool("left", true);
+            animator.SetBool("stay", false);
+        }
+        else
+        {
+            animator.SetBool("right", false);
+            animator.SetBool("left", false);
+            animator.SetBool("stay", true);
         }
     }
 

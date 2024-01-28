@@ -9,7 +9,7 @@ public class Grenade : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.velocity = new Vector2(Random.Range(10, 15), Random.Range(10, 20));
+        rb.velocity = new Vector2(Random.Range(30, 35), Random.Range(20, 30));
     }
 
     // Update is called once per frame

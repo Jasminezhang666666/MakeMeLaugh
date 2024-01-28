@@ -13,9 +13,10 @@ public class chair : Items
     [SerializeField] private float launchInterval  = 2f;
     void Start()
     {
+        point = 5;
         person = transform.Find("Person").gameObject;
         bullet.GetComponent<StraightLine>().speed = bulletSpeed;
-
+        bullet.GetComponent<StraightLine>().damage = point;
     }
 
     public void Update()
@@ -49,7 +50,7 @@ public class chair : Items
 
     }
 
-    public override void Destroy()
+    public override void DestroyThis()
     {
     }
 

@@ -11,12 +11,17 @@ public abstract class Items : MonoBehaviour
         EnterBase
     }
     public status itemStatus = status.Before;
-    private int point;
+    protected int point;
     public abstract void Launch();
-    public abstract void Destroy();
+    public abstract void DestroyThis();
     public int getPoint()
     {
         return point;
+    }
+
+    public void doDamage()
+    {
+        Point.DecreaseEnemyLife(getPoint());
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
@@ -27,7 +32,7 @@ public abstract class Items : MonoBehaviour
         }
         else if (collision.gameObject.tag == "EnemyBase")
         {
-            Destroy();
+            DestroyThis();
         }
     }
 

@@ -23,8 +23,10 @@ public class cat : Items
     [SerializeField] private float rotationSpeed = 45.0f;
     [SerializeField] private float force = 10.0f;
 
+
     void Start()
     {
+        point = 50;
         originalLength = transform.localScale.y;
         catLength = transform.localScale.y;
         feet = GameObject.Find("Feet").gameObject;
@@ -63,8 +65,9 @@ public class cat : Items
         triggered = true;
     }
 
-    public override void Destroy()
+    public override void DestroyThis()
     {
+        doDamage();
         Destroy(gameObject);
         Destroy(GameObject.Find("Head").gameObject);
 

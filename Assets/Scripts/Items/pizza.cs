@@ -20,6 +20,7 @@ public class pizza : Items
 
     void Start()
     {
+        point = 10;
         target = GameObject.Find("Enemy Base").gameObject;
         initialPosition = transform.position;
         offset = transform.position.y;
@@ -39,7 +40,7 @@ public class pizza : Items
 
             if (currentLoop > loopTime)
             {
-                Destroy(this.gameObject);
+                DestroyThis();
             }
             currentLoop++;
         }
@@ -50,8 +51,10 @@ public class pizza : Items
         triggered = true;
     }
 
-    public override void Destroy()
+    public override void DestroyThis()
     {
+        print(getPoint());
+        doDamage();
         Destroy(gameObject);
     }
 

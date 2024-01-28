@@ -5,6 +5,11 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    //TEST ONLY
+    public bool WASD = false;
+
+
+
     public float moveSpeed = 5f;
     public Transform feet; // Assign the Feet child object in the Inspector
     public float extendSpeed = 5f; // Speed at which feet extends
@@ -59,6 +64,15 @@ public class Player : MonoBehaviour
 
         if (!isMovingAllowed || feetExtended) return;
 
+
+
+        //TEST ONLY
+        if(WASD)
+        {
+            movement.x = Input.GetAxisRaw("Horizontal");
+            movement.y = Input.GetAxisRaw("Vertical");
+            movement.Normalize();
+        }
         // Movement and sprite flipping logic
         //movement.x = Input.GetAxisRaw("Horizontal");
         //movement.y = Input.GetAxisRaw("Vertical");

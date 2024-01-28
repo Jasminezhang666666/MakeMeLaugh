@@ -26,7 +26,7 @@ public abstract class Items : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "PlayerBase")
+        if (collision.gameObject.tag == "Base")
         {
             itemStatus = status.EnterBase;
         }

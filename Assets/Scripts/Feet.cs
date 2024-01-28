@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Feet : MonoBehaviour
@@ -98,10 +100,12 @@ public class Feet : MonoBehaviour
             Obj objectScript = attachedObject.GetComponent<Obj>();
             if (objectScript != null)
             {
+                Wait();
                 objectScript.isLifted = false;
                 objectScript.isFalling = true;
             }
 
+            Wait();
             // Reset the attached object and its Rigidbody
             attachedObject = null;
             objectRigidbody = null;
@@ -117,6 +121,11 @@ public class Feet : MonoBehaviour
     public void ResetCollisionFlag()
     {
         HasCollidedWithObject = false;
+    }
+
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(0.5f);
     }
 
 }

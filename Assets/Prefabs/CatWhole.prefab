@@ -153,7 +153,7 @@ MonoBehaviour:
   originalLength: 0
   RiseHeight: 3
   speed: 3
-  rotationDegree: 120
+  rotationDegree: 100
   rotationSpeed: 80
   force: 10
   lengthChanged: 0

@@ -7,17 +7,24 @@ public class Nut : MonoBehaviour
 {
     public Rigidbody2D rb;
     public int PlifeTime;
+    public int lifeTime;
+
     // Start is called before the first frame update
     void Start()
     {
-        rb.velocity = new Vector2 (Random.Range(-10,-15), Random.Range(-20,30));
+        rb.velocity = new Vector2 (Random.Range(-40,-45), Random.Range(-30,30));
     }
 
 
     private void Update()
     {
         PlifeTime--;
-        
+        lifeTime--;
+
+        if (lifeTime < 0)
+        { 
+            Destroy(this.gameObject);
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

@@ -119,19 +119,6 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: iPhone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -139,19 +126,19 @@ TextureImporter:
       name: fries_spSheet_0
       rect:
         serializedVersion: 2
-        x: 57
-        y: 69
-        width: 361
-        height: 360
+        x: 0
+        y: 0
+        width: 640
+        height: 692
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ec7777b5e649dfe44959857af6756208
-      internalID: 440149971
+      spriteID: 12ccc00b815823c4085f27e852e2a4d4
+      internalID: 521212248
       vertices: []
       indices: 
       edges: []
@@ -160,19 +147,19 @@ TextureImporter:
       name: fries_spSheet_1
       rect:
         serializedVersion: 2
-        x: 702
-        y: 66
-        width: 299
-        height: 363
+        x: 640
+        y: 0
+        width: 640
+        height: 692
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1e12bebc73f9b0d40a2b638d72d4d2a7
-      internalID: 2089526061
+      spriteID: 873e70948b1c2fa4bb0093062cae8529
+      internalID: 1522885277
       vertices: []
       indices: 
       edges: []
@@ -181,19 +168,19 @@ TextureImporter:
       name: fries_spSheet_2
       rect:
         serializedVersion: 2
-        x: 1335
-        y: 66
-        width: 306
-        height: 363
+        x: 1280
+        y: 0
+        width: 640
+        height: 692
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 81d30d9d865092c4084439ea53262af5
-      internalID: -166006683
+      spriteID: 827e8c62370fe37458083ee4edcdc0b1
+      internalID: 638528556
       vertices: []
       indices: 
       edges: []
@@ -202,19 +189,19 @@ TextureImporter:
       name: fries_spSheet_3
       rect:
         serializedVersion: 2
-        x: 1974
-        y: 66
-        width: 308
-        height: 363
+        x: 1920
+        y: 0
+        width: 640
+        height: 692
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a307b1be4a2d9054a8a1ce4b2de1ba39
-      internalID: -1000443882
+      spriteID: 220b3095755ae784992ae0fd9ec5f55d
+      internalID: -1367211463
       vertices: []
       indices: 
       edges: []
@@ -223,19 +210,19 @@ TextureImporter:
       name: fries_spSheet_4
       rect:
         serializedVersion: 2
-        x: 2614
-        y: 66
-        width: 480
-        height: 448
+        x: 2560
+        y: 0
+        width: 640
+        height: 692
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a9fbd407759df334288240ac24ac8d58
-      internalID: 2015948325
+      spriteID: 5292d983e717fba4f9ce47df3192cf4c
+      internalID: -1986677489
       vertices: []
       indices: 
       edges: []
@@ -244,19 +231,19 @@ TextureImporter:
       name: fries_spSheet_5
       rect:
         serializedVersion: 2
-        x: 3255
-        y: 66
-        width: 551
-        height: 575
+        x: 3200
+        y: 0
+        width: 640
+        height: 692
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6b4638bc0c4642542bb9f506e558c0fa
-      internalID: -713058534
+      spriteID: f4be68ac06a44ce41912e181a36f84c1
+      internalID: 1056227492
       vertices: []
       indices: 
       edges: []
@@ -272,12 +259,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      fries_spSheet_0: 440149971
-      fries_spSheet_1: 2089526061
-      fries_spSheet_2: -166006683
-      fries_spSheet_3: -1000443882
-      fries_spSheet_4: 2015948325
-      fries_spSheet_5: -713058534
+      fries_spSheet_0: 521212248
+      fries_spSheet_1: 1522885277
+      fries_spSheet_2: 638528556
+      fries_spSheet_3: -1367211463
+      fries_spSheet_4: -1986677489
+      fries_spSheet_5: 1056227492
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

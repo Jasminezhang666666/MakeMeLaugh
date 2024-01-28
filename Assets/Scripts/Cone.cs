@@ -12,7 +12,7 @@ public class Cone : MonoBehaviour
     {
         if (collision.gameObject.tag == "Base" && obj.isLifted == false)
         {
-            spriteRenderer.color = Color.red;
+            
             Gun.canFire = true;
         }
     }
@@ -21,7 +21,7 @@ public class Cone : MonoBehaviour
     {
         if (collision.gameObject.tag == "Base" && obj.isLifted == false)
         {
-            spriteRenderer.color = Color.red;
+            
             Gun.canFire = true;
         }
     }
@@ -30,7 +30,7 @@ public class Cone : MonoBehaviour
     {
         if (collision.gameObject.tag == "Base")
         {
-            spriteRenderer.color = Color.white;
+            
             Gun.canFire = false;
         }
     }

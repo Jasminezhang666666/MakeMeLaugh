@@ -42,6 +42,7 @@ public class ConeGun : MonoBehaviour
     {
         Instantiate(bullet, rb.position, Quaternion.identity);
         shootSound.Play();
+        Destroy(this.gameObject);
         yield return new WaitForSeconds(shootRate);
 
 

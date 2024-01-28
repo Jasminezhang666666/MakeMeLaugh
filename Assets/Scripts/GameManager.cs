@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class GameManager : MonoBehaviour
     private GameObject end;
     private GameObject start;
 
-    private GameObject Score;
+    private float score;
 
     void Awake()
     {
@@ -34,6 +35,7 @@ public class GameManager : MonoBehaviour
     }
     public void PlayEndScene()
     {
+        score = GameObject.FindWithTag("EnemyBase").gameObject.GetComponent<Ebase>().score;
         SceneManager.LoadScene("StartAndFinish");
         isEnd = true;
         ChangeToEnd();
@@ -49,6 +51,7 @@ public class GameManager : MonoBehaviour
     {
         start.SetActive(false);
         end.SetActive(true);
+        GameObject.Find("Score").GetComponent<TextMeshProUGUI>().text = "Score: " + score.ToString();
     }
 
     private void ChangeToStart()

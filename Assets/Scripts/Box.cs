@@ -35,15 +35,15 @@ public class Box : MonoBehaviour
         }
     }
 
-    //private void Update()
-    //{
-    //    if (obj.isLifted == true)
-    //    {
-    //        animator.SetBool("isRaise", true);
-    //    }
-    //    else
-    //    {
-    //        animator.SetBool("isRaise", false);
-    //    }
-    //}
+    private void Update()
+    {
+        if (obj.isLifted == true)
+        {
+            animator.SetBool("isRaise", true);
+        }
+        else
+        {
+            animator.SetBool("isRaise", false);
+        }
+    }
 }

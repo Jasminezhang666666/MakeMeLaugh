@@ -21,11 +21,11 @@ public class pizza : Items
     void Start()
     {
         point = 10;
-        target = GameObject.Find("Enemy Base").gameObject;
+        target = GameObject.FindGameObjectWithTag("EnemyBase");
         initialPosition = transform.position;
         offset = transform.position.y;
         float xPos = target.transform.position.x - initialPosition.x;
-
+        triggered = true;
         n = new Vector2(speed * Time.fixedDeltaTime, 0);
         loopTime = Mathf.CeilToInt(Mathf.Abs(xPos) / n.x);
     }

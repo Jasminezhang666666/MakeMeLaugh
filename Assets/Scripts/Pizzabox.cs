@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChipsGun : MonoBehaviour
+public class Pizzabox : MonoBehaviour
 {
     public int coolDown;
     public int coolCounter;
@@ -40,18 +40,10 @@ public class ChipsGun : MonoBehaviour
 
     IEnumerator MafiaFireGun()
     {
-        animator.SetBool("isAttack",true);
-        Instantiate(bullet, rb.position, Quaternion.identity);
-        Instantiate(bullet, rb.position, Quaternion.identity);
-        Instantiate(bullet, rb.position, Quaternion.identity);
-        Instantiate(bullet, rb.position, Quaternion.identity);
-        Instantiate(bullet, rb.position, Quaternion.identity);
-        Instantiate(bullet, rb.position, Quaternion.identity);
-        Instantiate(bullet, rb.position, Quaternion.identity);
-        Instantiate(bullet, rb.position, Quaternion.identity);
         Instantiate(bullet, rb.position, Quaternion.identity);
         shootSound.Play();
-        animator.SetBool("isAttack", false);
+        Instantiate(bullet, rb.position, Quaternion.identity);
+        shootSound.Play();
         yield return new WaitForSeconds(shootRate);
 
 

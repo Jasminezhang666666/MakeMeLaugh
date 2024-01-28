@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Chips : MonoBehaviour
+public class Pizza : MonoBehaviour
 {
     public SpriteRenderer spriteRenderer;
-    public ChipsGun Gun;
+    public Pizzabox Gun;
     public Obj obj;
     public Animator animator;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Base" && obj.isLifted == false)
         {
-            animator.SetBool("isTrigger",true);
+            animator.SetBool("isTrigger", true);
             Gun.canFire = true;
         }
     }

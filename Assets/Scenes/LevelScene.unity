@@ -1310,11 +1310,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2366065655149774577, guid: c8ac3db3955750149ae15816b5bd7678, type: 3}
       propertyPath: m_SortingLayer
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2366065655149774577, guid: c8ac3db3955750149ae15816b5bd7678, type: 3}
       propertyPath: m_SortingLayerID
-      value: 0
+      value: 1616173491
       objectReference: {fileID: 0}
     - target: {fileID: 4426829732222420526, guid: c8ac3db3955750149ae15816b5bd7678, type: 3}
       propertyPath: m_LocalScale.x
@@ -2485,7 +2485,7 @@ Transform:
   m_GameObject: {fileID: 1205444119}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.189, y: -7.2, z: 0}
+  m_LocalPosition: {x: 1.423, y: -7.2, z: 0}
   m_LocalScale: {x: 0.020707363, y: 2.5112712, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2754,7 +2754,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1213356990}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 07108e28a247b4f459ee2b9aba2526ef, type: 3}
   m_Name: 
@@ -4024,6 +4024,22 @@ PrefabInstance:
       propertyPath: leftBoundaryTransform
       value: 
       objectReference: {fileID: 1205444120}
+    - target: {fileID: 8353680151018318311, guid: dc71a3b51d30e2847b7077de6b5d4730, type: 3}
+      propertyPath: m_SortingLayer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8353680151018318311, guid: dc71a3b51d30e2847b7077de6b5d4730, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1654117741
+      objectReference: {fileID: 0}
+    - target: {fileID: 8421463034072218546, guid: dc71a3b51d30e2847b7077de6b5d4730, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8421463034072218546, guid: dc71a3b51d30e2847b7077de6b5d4730, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1616173491
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

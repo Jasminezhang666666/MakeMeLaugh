@@ -12,9 +12,19 @@ public class GameManager : MonoBehaviour
 
     private float score;
 
+    public static GameManager Instance;
+
     void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else if (Instance != this)
+        {
+            Destroy(Instance.gameObject);
+        }
     }
     void Start()
     {
@@ -36,7 +46,7 @@ public class GameManager : MonoBehaviour
     public void PlayEndScene()
     {
         score = GameObject.FindWithTag("EnemyBase").gameObject.GetComponent<Ebase>().score;
-        SceneManager.LoadScene("StartAndFinish");
+        
         isEnd = true;
         ChangeToEnd();
 
@@ -47,10 +57,16 @@ public class GameManager : MonoBehaviour
         isEnd = false;
         ChangeToStart();
     }
-    private void ChangeToEnd()
+    public void ChangeToEnd()
     {
-        start.SetActive(false);
-        end.SetActive(true);
+        SceneManager.LoadScene("Ending");
+
+        //end = GameObject.Find("End");
+        //start = GameObject.Find("Start");
+
+        //start.SetActive(false);
+        //end.SetActive(true);
+
         GameObject.Find("Score").GetComponent<TextMeshProUGUI>().text = "Score: " + score.ToString();
     }
 

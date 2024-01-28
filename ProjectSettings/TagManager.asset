@@ -8,6 +8,9 @@ TagManager:
   - Feet
   - PlayerBase
   - EnemyBase
+  - Base
+  - Bullet
+  - nut
   layers:
   - Default
   - TransparentFX
@@ -19,9 +22,9 @@ TagManager:
   - Ground
   - 
   - Van
-  - 
+  - Base
   - Player
-  - 
+  - nut
   - Poop
   - Bullet
   - 

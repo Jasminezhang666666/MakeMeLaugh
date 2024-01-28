@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 7033783587153780331}
   - component: {fileID: 4830327616501835898}
   - component: {fileID: 5932591662058103906}
-  - component: {fileID: 3517460645323550737}
   m_Layer: 0
   m_Name: chipsGun
   m_TagString: Object
@@ -285,59 +284,3 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!60 &3517460645323550737
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6957953808756828623}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 6.4011564, y: 6.92}
-    newSize: {x: 6.4011564, y: 6.92}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.48366776, y: 0.9021404}
-      - {x: -1.6918693, y: 0.5013427}
-      - {x: -1.8237054, y: 0.41586939}
-      - {x: -2.735075, y: 0.07697779}
-      - {x: -2.1015627, y: -2.8036406}
-      - {x: 0.39188564, y: -2.6967869}
-      - {x: 0.6234037, y: -1.6816658}
-      - {x: 0.79414755, y: -1.105404}
-      - {x: 0.9083497, y: -0.719971}
-      - {x: 0.87507397, y: -0.20271027}
-      - {x: 0.434592, y: 0.70081913}
-  m_UseDelaunayMesh: 0

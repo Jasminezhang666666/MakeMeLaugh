@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     private GameObject end;
     private GameObject start;
 
+    private GameObject Score;
+
     void Awake()
     {
         DontDestroyOnLoad(gameObject);
@@ -23,7 +25,7 @@ public class GameManager : MonoBehaviour
 
     public void PlayVideoScene()
     {
-        SceneManager.LoadScene("Start2");
+        SceneManager.LoadScene("Start 2");
     }
 
     public void PlayGameScene()

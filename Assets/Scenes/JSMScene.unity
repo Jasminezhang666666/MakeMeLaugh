@@ -1931,7 +1931,6 @@ GameObject:
   - component: {fileID: 1245274912}
   - component: {fileID: 1245274911}
   - component: {fileID: 1245274910}
-  - component: {fileID: 1245274914}
   m_Layer: 0
   m_Name: Pizza
   m_TagString: Object
@@ -1948,7 +1947,7 @@ Transform:
   m_GameObject: {fileID: 1245274908}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.2497, y: -0.7814, z: 0}
+  m_LocalPosition: {x: -0.088, y: -0.102, z: 0}
   m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2027,18 +2026,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.14878845, y: -0.08502193}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.72, y: 0.3}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 1.28, y: 1.28}
+    newSize: {x: 1.28, y: 1.28}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.7024231, y: 0.2773134}
   m_EdgeRadius: 0
 --- !u!212 &1245274913
 SpriteRenderer:
@@ -2081,38 +2080,17 @@ SpriteRenderer:
   m_SortingLayerID: 1616173491
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 687825126, guid: d65c1d1c8ee5b194ebf3c064f4d645dd, type: 3}
+  m_Sprite: {fileID: 865851067, guid: a17c96767eba23949b6afbf99035d844, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.28, y: 1.28}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &1245274914
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1245274908}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2f397a974b6c34f44920086053266941, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1249108715
 GameObject:
   m_ObjectHideFlags: 0
@@ -2399,6 +2377,7 @@ GameObject:
   - component: {fileID: 1339519332}
   - component: {fileID: 1339519331}
   - component: {fileID: 1339519330}
+  - component: {fileID: 1339519335}
   m_Layer: 0
   m_Name: PizzaGuy
   m_TagString: Untagged
@@ -2438,18 +2417,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.011213958}
+  m_Offset: {x: -0.17761403, y: 0.12643684}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.72, y: 0.3}
-    newSize: {x: 0.72, y: 0.3}
+    oldSize: {x: 1.28, y: 1.28}
+    newSize: {x: 1.28, y: 1.28}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.0224279}
+  m_Size: {x: 0.34282833, y: 0.30309138}
   m_EdgeRadius: 0
 --- !u!114 &1339519331
 MonoBehaviour:
@@ -2534,12 +2513,12 @@ SpriteRenderer:
   m_SortingLayerID: -1649528463
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 687825126, guid: d65c1d1c8ee5b194ebf3c064f4d645dd, type: 3}
+  m_Sprite: {fileID: -1590117608, guid: bcab18b63f6ba724fbcd7b1e14f684c5, type: 3}
   m_Color: {r: 0.9528302, g: 0.82837397, b: 0.7137238, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.72, y: 0.3}
+  m_Size: {x: 1.28, y: 1.28}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -2554,13 +2533,34 @@ Transform:
   m_GameObject: {fileID: 1339519328}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.24, y: 3.29, z: 0}
+  m_LocalPosition: {x: 8.24, y: 0.1, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1245274909}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1339519335
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1339519328}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6cd1d276665fae941863b3d125615efc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1409330896
 GameObject:
   m_ObjectHideFlags: 0

@@ -181,7 +181,7 @@ public class Player : MonoBehaviour
             feet.localPosition = newLocalPosition;
             yield return null;
         }
-
+        yield return new WaitForSeconds(1f);
         isMovingAllowed = true;
         feetExtended = false; // Reset the feetExtended state
     }

@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3991877600121318313
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3480949029777061525}
+  m_Layer: 0
+  m_Name: GunPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3480949029777061525
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3991877600121318313}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.47, y: -0.68, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8269155717806640609}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4625469647400324563
 GameObject:
   m_ObjectHideFlags: 0
@@ -16,6 +47,7 @@ GameObject:
   - component: {fileID: 4331964840200027348}
   - component: {fileID: 1535208040788387734}
   - component: {fileID: 722971638117098326}
+  - component: {fileID: 6808601004975191434}
   m_Layer: 0
   m_Name: Guitar
   m_TagString: Untagged
@@ -35,7 +67,8 @@ Transform:
   m_LocalPosition: {x: 47.42, y: 12.04, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 3480949029777061525}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &574020017367468626
@@ -79,7 +112,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: aa668da6a43a60c42bce8da819b3b4b7, type: 3}
+  m_Sprite: {fileID: 1069397770, guid: 091fc635d9c9f9b48b2702bde9fbe583, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -126,7 +159,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.67, y: 1.37}
+    oldSize: {x: 2.56, y: 2.56}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -134,14 +167,15 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.03215027, y: 0.062387466}
-      - {x: -0.038213253, y: 0.56156987}
-      - {x: -1.5912422, y: 0.55758137}
-      - {x: -1.6023225, y: -0.54096156}
-      - {x: -0.015826702, y: -0.53178364}
-      - {x: -0.027479649, y: -0.14007944}
-      - {x: 1.4804438, y: -0.13100588}
-      - {x: 1.4749035, y: 0.07006645}
+    - - {x: 0.46001244, y: -0.4195909}
+      - {x: 0.45482302, y: -0.08529569}
+      - {x: -1.1272739, y: -0.093471155}
+      - {x: -1.1080475, y: -1.1966374}
+      - {x: -1.1023892, y: -1.3464613}
+      - {x: 0.20198107, y: -1.336304}
+      - {x: 1.2882247, y: -1.3422744}
+      - {x: 1.2943858, y: -0.76892275}
+      - {x: 0.45551336, y: -0.7752688}
   m_UseDelaunayMesh: 0
 --- !u!50 &1702293665117962218
 Rigidbody2D:
@@ -189,6 +223,8 @@ MonoBehaviour:
   rb: {fileID: 0}
   shootRate: 0.2
   shootSound: {fileID: 4331964840200027348}
+  animator: {fileID: 6808601004975191434}
+  gunpoint: {fileID: 3991877600121318313}
 --- !u!82 &4331964840200027348
 AudioSource:
   m_ObjectHideFlags: 0
@@ -300,6 +336,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 574020017367468626}
   Gun: {fileID: 6604860832330345974}
   obj: {fileID: 722971638117098326}
+  animator: {fileID: 6808601004975191434}
 --- !u!114 &722971638117098326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -314,3 +351,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isLifted: 0
   isFalling: 0
+--- !u!95 &6808601004975191434
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4625469647400324563}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a620d49c33e6bc94d8e7ac9ca8d200dd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

@@ -12,7 +12,8 @@ public class MafiaGun : MonoBehaviour
     public Rigidbody2D rb;
     public float shootRate;
     public AudioSource shootSound;
-
+    public Animator animator;
+    public GameObject gunpoint;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -41,24 +42,25 @@ public class MafiaGun : MonoBehaviour
 
     IEnumerator MafiaFireGun()
     {
-        Instantiate(bullet, rb.position, Quaternion.identity);
+        animator.SetBool("isAttacking",true);
+        Instantiate(bullet, new Vector2(gunpoint.transform.position.x, gunpoint.transform.position.y), Quaternion.identity);
         shootSound.Play();
         yield return new WaitForSeconds(shootRate);
-        Instantiate(bullet, rb.position, Quaternion.identity);
+        Instantiate(bullet, new Vector2 (gunpoint.transform.position.x, gunpoint.transform.position.y), Quaternion.identity);
         shootSound.Play();
         yield return new WaitForSeconds(shootRate);
-        Instantiate(bullet, rb.position, Quaternion.identity);
+        Instantiate(bullet, new Vector2(gunpoint.transform.position.x, gunpoint.transform.position.y), Quaternion.identity);
         shootSound.Play();
         yield return new WaitForSeconds(shootRate);
-        Instantiate(bullet, rb.position, Quaternion.identity);
+        Instantiate(bullet, new Vector2(gunpoint.transform.position.x, gunpoint.transform.position.y), Quaternion.identity);
         shootSound.Play();
         yield return new WaitForSeconds(shootRate);
-        Instantiate(bullet, rb.position, Quaternion.identity);
+        Instantiate(bullet, new Vector2(gunpoint.transform.position.x, gunpoint.transform.position.y), Quaternion.identity);
         shootSound.Play();
 
         yield return new WaitForSeconds(shootRate);
-       
-        
+        animator.SetBool("isAttacking", false);
+
 
     }
 }

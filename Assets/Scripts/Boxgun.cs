@@ -11,7 +11,7 @@ public class Boxgun : MonoBehaviour
     public Rigidbody2D rb;
     public float shootRate;
     public AudioSource shootSound;
-
+    public Animator animator;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -40,10 +40,12 @@ public class Boxgun : MonoBehaviour
 
     IEnumerator MafiaFireGun()
     {
+        animator.SetBool("isAttack", true);
         Instantiate(bullet, rb.position, Quaternion.identity);
         shootSound.Play();
         yield return new WaitForSeconds(shootRate);
-        
+        animator.SetBool("isAttack", false);
+
 
 
 

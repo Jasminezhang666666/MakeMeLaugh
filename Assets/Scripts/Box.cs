@@ -7,7 +7,7 @@ public class Box : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public Boxgun Gun;
     public Obj obj;
-
+    public Animator animator;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Base" && obj.isLifted == false)
@@ -32,6 +32,18 @@ public class Box : MonoBehaviour
         {
             spriteRenderer.color = Color.white;
             Gun.canFire = false;
+        }
+    }
+
+    private void Update()
+    {
+        if (obj.isLifted == true)
+        {
+            animator.SetBool("isRaise", true);
+        }
+        else
+        {
+            animator.SetBool("isRaise", false);
         }
     }
 }

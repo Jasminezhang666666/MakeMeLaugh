@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     private GameObject end;
     private GameObject start;
 
-    private float score;
+    public float score;
 
     public static GameManager Instance;
 
@@ -32,6 +32,14 @@ public class GameManager : MonoBehaviour
         start = GameObject.Find("Start");
         ChangeToStart();
         //GameObject.Find("Pizza").GetComponent<pizza>().Launch();
+    }
+
+    private void Update()
+    {
+        if (isEnd)
+        {
+            EndAgain();
+        }
     }
 
     public void PlayVideoScene()

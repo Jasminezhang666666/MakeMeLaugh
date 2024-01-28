@@ -8,7 +8,8 @@ public class cat : Items
     [SerializeField]
     private bool triggered;
     private float catLength;
-    private float originalLength;
+    public float originalLength;
+    private float originalScale;
     private GameObject feet;
     private float feetHeight;
     private Transform target;
@@ -23,12 +24,16 @@ public class cat : Items
     [SerializeField] private float rotationSpeed = 45.0f;
     [SerializeField] private float force = 10.0f;
     public float lengthChanged = 0;
+    public GameObject ownHead;
+    public GameObject ownFeet;
+    private Animator anim;
 
 
     void Start()
     {
         point = 50;
-        originalLength = transform.localScale.y;
+        originalLength = GetComponent<Collider2D>().bounds.size.y;
+        originalScale = transform.localScale.y;
         catLength = transform.localScale.y;
 
         feet = GameObject.Find("Feet").gameObject;
@@ -38,7 +43,10 @@ public class cat : Items
         
         rb = GetComponent<Rigidbody2D>();
         timeToHit = false;
-}
+
+        anim = ownFeet.GetComponent<Animator>();
+
+    }
 
     void Update()
     {
@@ -56,10 +64,15 @@ public class cat : Items
         if (this.GetComponent<Obj>().isLifted)
         {
             itemStatus = status.Air;
-            print(lengthChanged);
-            catLength = (float)(Mathf.Abs(feetHeight - feet.transform.position.y) * 0.5f + originalLength);
-            lengthChanged = catLength - originalLength;
-            transform.localScale = new Vector3(transform.localScale.x, catLength, transform.localScale.z);
+            
+            catLength = (float)(Mathf.Abs(feetHeight - feet.transform.position.y) + originalLength);
+            float newScaleY = catLength / originalLength * originalScale;
+            foreach (Transform child in transform)
+            {
+                child.localScale = new Vector3(child.localScale.x, 1 / newScaleY, child.localScale.z);
+            }
+            lengthChanged = Mathf.Abs(feetHeight - feet.transform.position.y);
+            transform.localScale = new Vector3(transform.localScale.x, newScaleY, transform.localScale.z);
         }
         
     }
@@ -94,7 +107,7 @@ public class cat : Items
 
         transform.position = endPosition;
 
-
+        anim.SetBool("turn", true);
         //rotation
         float currentRotation = 0;
         float rotationStep;
@@ -102,7 +115,9 @@ public class cat : Items
         while (currentRotation < rotationDegree)
         {
             rotationStep = -rotationSpeed * Time.deltaTime;
-            transform.Rotate(Vector3.forward, rotationStep, Space.Self);
+            //transform.Rotate(Vector3.forward, rotationStep, Space.Self);
+            ownHead.transform.Rotate(Vector3.forward, rotationStep, Space.Self);
+
             currentRotation -= rotationStep;
             yield return null;
 

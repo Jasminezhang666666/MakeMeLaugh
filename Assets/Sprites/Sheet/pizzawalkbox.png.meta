@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d65c1d1c8ee5b194ebf3c064f4d645dd
+guid: a17c96767eba23949b6afbf99035d844
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -136,13 +136,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: pizzabox_sheet_0
+      name: pizzawalkbox_0
       rect:
         serializedVersion: 2
-        x: 29
-        y: 16
-        width: 72
-        height: 30
+        x: 0
+        y: 0
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -150,20 +150,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 78772c64159631044b97b622858d2c2b
-      internalID: 687825126
+      spriteID: bdf54ef485c5271429c46f69e497cf4d
+      internalID: 865851067
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pizzabox_sheet_1
+      name: pizzawalkbox_1
       rect:
         serializedVersion: 2
-        x: 154
-        y: 16
-        width: 75
-        height: 89
+        x: 128
+        y: 0
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,20 +171,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2dce4adacf4298b4ea904bfadaf5e454
-      internalID: 1492584605
+      spriteID: 8c08bb5c16c44fa498ccd49c91d52064
+      internalID: 878222229
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pizzabox_sheet_2
+      name: pizzawalkbox_2
       rect:
         serializedVersion: 2
-        x: 282
-        y: 16
-        width: 75
-        height: 89
+        x: 256
+        y: 0
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -192,20 +192,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6095e2e7cfaecf94d82eb8c6fe13380a
-      internalID: -2013814092
+      spriteID: 6dce7b7fb7d6c1e4380985af749ad5e9
+      internalID: 117882301
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pizzabox_sheet_3
+      name: pizzawalkbox_3
       rect:
         serializedVersion: 2
-        x: 410
-        y: 16
-        width: 75
-        height: 89
+        x: 384
+        y: 0
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -213,20 +213,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3f5ec90209e346f40895a0dc0824b638
-      internalID: 2147427039
+      spriteID: c8dcf81c6cd09104cb943cd05644b1d1
+      internalID: -1626718797
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pizzabox_sheet_4
+      name: pizzawalkbox_4
       rect:
         serializedVersion: 2
-        x: 538
-        y: 16
-        width: 75
-        height: 89
+        x: 512
+        y: 0
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -234,20 +234,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 28fc44224ca65754db16cf1767166eed
-      internalID: -748116535
+      spriteID: 47af863b5dce2a64da98107e26c8d582
+      internalID: 1664957810
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pizzabox_sheet_5
+      name: pizzawalkbox_5
       rect:
         serializedVersion: 2
-        x: 666
-        y: 16
-        width: 75
-        height: 89
+        x: 640
+        y: 0
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -255,20 +255,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a06574f75c28e1342bfa5f45052a620d
-      internalID: 2097483333
+      spriteID: 35e3a6f8bcf4fd54997aee46e7c64bf8
+      internalID: 2013935663
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pizzabox_sheet_6
+      name: pizzawalkbox_6
       rect:
         serializedVersion: 2
-        x: 794
-        y: 16
-        width: 75
-        height: 89
+        x: 768
+        y: 0
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -276,20 +276,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ac01ec7d59c8ad146b1cfdc5e2fcede0
-      internalID: 296687255
+      spriteID: b4a73e94064dcf947a2da4cbd2f942cc
+      internalID: 783660633
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pizzabox_sheet_7
+      name: pizzawalkbox_7
       rect:
         serializedVersion: 2
-        x: 922
-        y: 16
-        width: 75
-        height: 89
+        x: 896
+        y: 0
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -297,71 +297,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7adaa5d9eccdf404f84517ae66e877f7
-      internalID: -1741146688
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: pizzabox_sheet_8
-      rect:
-        serializedVersion: 2
-        x: 1053
-        y: 16
-        width: 72
-        height: 60
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c1f3ae1dce6f95e4892940cae4f84506
-      internalID: -666476938
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: pizzabox_sheet_9
-      rect:
-        serializedVersion: 2
-        x: 1181
-        y: 16
-        width: 72
-        height: 39
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 051a7e319175a394d8e218f1a8c49d13
-      internalID: 1278394258
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: pizzabox_sheet_10
-      rect:
-        serializedVersion: 2
-        x: 1309
-        y: 16
-        width: 72
-        height: 30
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 45dcd649f8f45c2448f492602dae7e99
-      internalID: -219108451
+      spriteID: 6a8705385cb39a24c84dfa0706571c19
+      internalID: 644207271
       vertices: []
       indices: 
       edges: []
@@ -377,17 +314,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      pizzabox_sheet_0: 687825126
-      pizzabox_sheet_1: 1492584605
-      pizzabox_sheet_10: -219108451
-      pizzabox_sheet_2: -2013814092
-      pizzabox_sheet_3: 2147427039
-      pizzabox_sheet_4: -748116535
-      pizzabox_sheet_5: 2097483333
-      pizzabox_sheet_6: 296687255
-      pizzabox_sheet_7: -1741146688
-      pizzabox_sheet_8: -666476938
-      pizzabox_sheet_9: 1278394258
+      pizzawalkbox_0: 865851067
+      pizzawalkbox_1: 878222229
+      pizzawalkbox_2: 117882301
+      pizzawalkbox_3: -1626718797
+      pizzawalkbox_4: 1664957810
+      pizzawalkbox_5: 2013935663
+      pizzawalkbox_6: 783660633
+      pizzawalkbox_7: 644207271
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -49,6 +49,7 @@ public class GameManager : MonoBehaviour
         
         isEnd = true;
         ChangeToEnd();
+        EndAgain();
 
     }
 
@@ -74,6 +75,12 @@ public class GameManager : MonoBehaviour
     {
         start.SetActive(true);
         end.SetActive(false);
+    }
+
+    public void EndAgain()
+    {
+        GameObject.Find("Score").GetComponent<TextMeshProUGUI>().text = "Score: " + score.ToString();
+        print(GameObject.Find("Score").GetComponent<TextMeshProUGUI>().text);
     }
 
 }
